@@ -30,4 +30,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation "com.android.support:appcompat-v7:27.1.1"
     implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+    implementation "com.google.code.gson:gson:2.8.5"
 }
