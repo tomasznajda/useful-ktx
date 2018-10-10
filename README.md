@@ -1,4 +1,5 @@
 # useful-ktx
+[![CircleCI](https://circleci.com/gh/tomasznajda/useful-ktx.svg?style=svg)](https://circleci.com/gh/tomasznajda/useful-ktx)\
 Useful Kotlin extensions to speed up Android app development
 
 ## [android](https://github.com/tomasznajda/useful-ktx/tree/master/android/src/main/kotlin/com/tomasznajda/ktx/android)

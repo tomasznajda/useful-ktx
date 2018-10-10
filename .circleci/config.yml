@@ -1,0 +1,105 @@
+version: 2
+
+references:
+  ## Cache
+  cache_key: &cache_key
+    key: jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "android/build.gradle" }}-{{ checksum "gson/build.gradle" }}-{{ checksum "kotlin/build.gradle" }}-{{ checksum "rxjava2/build.gradle" }}
+  restore_cache: &restore_cache
+    restore_cache:
+      <<: *cache_key
+  save_cache: &save_cache
+    save_cache:
+      <<: *cache_key
+      paths:
+        - ~/.gradle
+
+  ## Docker image configurations
+  android_config: &android_config
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/android:api-27-alpha
+    environment:
+      JVM_OPTS: -Xmx4G
+
+jobs:
+  android_test:
+    <<: *android_config
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+      - *save_cache
+      - run:
+          name: Run unit tests
+          command: ./gradlew -PciBuild=true :android:testReleaseUnitTest
+      - store_artifacts:
+          path: android/build/reports/
+          destination: /reports/
+      - store_test_results:
+          path: android/build/test-results/
+          destination: /test-results/
+  gson_test:
+    <<: *android_config
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+      - *save_cache
+      - run:
+          name: Run unit tests
+          command: ./gradlew -PciBuild=true :gson:testReleaseUnitTest
+      - store_artifacts:
+          path: gson/build/reports/
+          destination: /reports/
+      - store_test_results:
+          path: gson/build/test-results/
+          destination: /test-results/
+  kotlin_test:
+    <<: *android_config
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+      - *save_cache
+      - run:
+          name: Run unit tests
+          command: ./gradlew -PciBuild=true :kotlin:testReleaseUnitTest
+      - store_artifacts:
+          path: kotlin/build/reports/
+          destination: /reports/
+      - store_test_results:
+          path: kotlin/build/test-results/
+          destination: /test-results/
+  rxjava2_test:
+    <<: *android_config
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+      - *save_cache
+      - run:
+          name: Run unit tests
+          command: ./gradlew -PciBuild=true :rxjava2:testReleaseUnitTest
+      - store_artifacts:
+          path: rxjava2/build/reports/
+          destination: /reports/
+      - store_test_results:
+          path: rxjava2/build/test-results/
+          destination: /test-results/
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - android_test
+      - gson_test
+      - kotlin_test
+      - rxjava2_test
