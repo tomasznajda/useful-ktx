@@ -1,1 +1,1 @@
-include ':ktx'
+include ':android', ':junit', ':rxjava2', ':gson', ':kotlin'
