@@ -1,0 +1,95 @@
+rootProject.ext {
+    library = [
+            name  : 'ktx',
+            group : 'com.tomasznajda.ktx',
+            author: [
+                    id   : 'tomasznajda',
+                    name : 'Tomasz Najda',
+                    email: 'hello@tomasznajda.com'
+            ],
+            urls  : [
+                    site: 'https://github.com/tomasznajda/useful-ktx',
+                    git : 'https://github.com/tomasznajda/useful-ktx.git'
+            ]
+    ]
+}
+
+group = rootProject.ext.library.group
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId rootProject.ext.library.group
+                artifactId rootProject.ext.artifact.name
+
+                name rootProject.ext.artifact.name
+                description rootProject.ext.artifact.desc
+                url rootProject.ext.library.urls.site
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id rootProject.ext.library.author.id
+                        name rootProject.ext.library.author.name
+                        email rootProject.ext.library.author.email
+                    }
+                }
+                scm {
+                    connection rootProject.ext.library.urls.git
+                    developerConnection rootProject.ext.library.urls.git
+                    url rootProject.ext.library.urls.site
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    excludes = ['**/*.kt']
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+bintray {
+    if (project.rootProject.file('local.properties').exists()) {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        user = properties.getProperty("bintray.user")
+        key = properties.getProperty("bintray.apikey")
+
+        configurations = ['archives']
+        override = true
+        pkg {
+            repo = rootProject.ext.library.name
+            name = rootProject.ext.artifact.name
+            desc = rootProject.ext.artifact.desc
+            websiteUrl = rootProject.ext.library.urls.site
+            vcsUrl = rootProject.ext.library.urls.git
+            licenses = ["Apache-2.0"]
+            publish = true
+        }
+    }
+}

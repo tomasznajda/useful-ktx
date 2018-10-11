@@ -1,13 +1,17 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: "com.jfrog.bintray"
+
+version = '1.0.0'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0.0"
+        versionName version
     }
     buildTypes {
         release {
@@ -29,3 +33,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     testImplementation "junit:junit:4.12"
 }
+
+rootProject.ext {
+    artifact = [
+            name: 'kotlin',
+            desc: 'Useful Kotlin extensions to speed up Android app development'
+    ]
+}
+
+apply from: '../upload.gradle'

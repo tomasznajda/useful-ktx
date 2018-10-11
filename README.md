@@ -2,6 +2,18 @@
 [![CircleCI](https://circleci.com/gh/tomasznajda/useful-ktx.svg?style=svg)](https://circleci.com/gh/tomasznajda/useful-ktx)\
 Useful Kotlin extensions to speed up Android app development
 
+## dependencies
+```groovy
+dependencies {
+    implementation "com.tomasznajda.ktx:android:1.0.0"
+    implementation "com.tomasznajda.ktx:gson:1.0.0"
+    implementation "com.tomasznajda.ktx:kotlin:1.0.0"
+    implementation "com.tomasznajda.ktx:rxjava2:1.0.0"
+
+    testImplementation "com.tomasznajda.ktx:junit:1.0.0"
+}
+```
+
 ## [android](https://github.com/tomasznajda/useful-ktx/tree/master/android/src/main/kotlin/com/tomasznajda/ktx/android)
 ```kotlin
 Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT)
