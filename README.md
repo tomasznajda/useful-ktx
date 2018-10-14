@@ -5,7 +5,7 @@ Useful Kotlin extensions to speed up Android app development
 ## dependencies
 ```groovy
 dependencies {
-    implementation "com.tomasznajda.ktx:android:1.0.0"
+    implementation "com.tomasznajda.ktx:android:1.1.0"
     implementation "com.tomasznajda.ktx:gson:1.0.0"
     implementation "com.tomasznajda.ktx:kotlin:1.0.0"
     implementation "com.tomasznajda.ktx:rxjava2:1.0.0"
@@ -16,8 +16,67 @@ dependencies {
 
 ## [android](https://github.com/tomasznajda/useful-ktx/tree/master/android/src/main/kotlin/com/tomasznajda/ktx/android)
 ```kotlin
+String.copyToClipboard(context: Context, label: String)
+
+ViewGroup.inflate(@LayoutRes layoutId: Int, attachToRoot: Boolean = false)
+Context.inflate(@LayoutRes layoutId: Int)
+Fragment.inflate(@LayoutRes layoutId: Int)
+
+logwtf(tag: String, msg: String = "", e: Throwable? = null)
+loge(tag: String, msg: String = "", e: Throwable? = null)
+logw(tag: String, msg: String = "", e: Throwable? = null)
+logi(tag: String, msg: String = "", e: Throwable? = null)
+logd(tag: String, msg: String = "", e: Throwable? = null)
+logv(tag: String, msg: String = "", e: Throwable? = null)
+Any.loge(tag: String, format: (String) -> String = { it })
+Any.logw(tag: String, format: (String) -> String = { it })
+Any.logi(tag: String, format: (String) -> String = { it })
+Any.logd(tag: String, format: (String) -> String = { it })
+Any.logv(tag: String, format: (String) -> String = { it })
+Any.println(format: (String) -> String = { it })
+Throwable.logwtf(tag: String, msg: String = "")
+Throwable.loge(tag: String, msg: String = "")
+Throwable.logw(tag: String, msg: String = "")
+Throwable.logi(tag: String, msg: String = "")
+Throwable.logd(tag: String, msg: String = "")
+Throwable.logv(tag: String, msg: String = "")
+
+Context.getSystemService<T>(name: String)
+Context.clipboardManager: ClipboardManager?
+Context.windowManager: WindowManager?
+Context.layoutInflater: LayoutInflater?
+Context.activityManager: ActivityManager?
+Context.powerManager: PowerManager?
+Context.alarmManager: AlarmManager?
+Context.notificationManager: NotificationManager?
+Context.keyguardManager: KeyguardManager?
+Context.locationManager: LocationManager?
+Context.searchManager: SearchManager?
+Context.sensorManager: SensorManager?
+Context.storageManager: StorageManager?
+Context.vibrator: Vibrator?
+Context.connectivityManager: ConnectivityManager?
+Context.wifiManager: WifiManager?
+Context.audioManager: AudioManager?
+Context.mediaRouter: MediaRouter?
+Context.telephonyManager: TelephonyManager?
+Context.subscriptionManager: SubscriptionManager?
+Context.carrierConfigManager: CarrierConfigManager?
+Context.inputMethodManager: InputMethodManager?
+Context.uiModeManager: UiModeManager?
+Context.downloadManager: DownloadManager?
+Context.batteryManager: BatteryManager?
+Context.jobScheduler: JobScheduler?
+
 Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT)
 Context.toast(@StringRes messageId: Int, duration: Int = Toast.LENGTH_SHORT)
+
+View.visible()
+View.invisible()
+View.gone()
+View.isVisible: Boolean
+View.isInvisible: Boolean
+View.isGone: Boolean
 ```
 
 ## [kotlin](https://github.com/tomasznajda/useful-ktx/tree/master/kotlin/src/main/kotlin/com/tomasznajda/ktx/kotlin)
