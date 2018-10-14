@@ -7,7 +7,7 @@ Useful Kotlin extensions to speed up Android app development
 dependencies {
     implementation "com.tomasznajda.ktx:android:1.1.0"
     implementation "com.tomasznajda.ktx:gson:1.0.0"
-    implementation "com.tomasznajda.ktx:kotlin:1.0.0"
+    implementation "com.tomasznajda.ktx:kotlin:1.1.0"
     implementation "com.tomasznajda.ktx:rxjava2:1.0.0"
 
     testImplementation "com.tomasznajda.ktx:junit:1.0.0"
@@ -81,8 +81,15 @@ View.isGone: Boolean
 
 ## [kotlin](https://github.com/tomasznajda/useful-ktx/tree/master/kotlin/src/main/kotlin/com/tomasznajda/ktx/kotlin)
 ```kotlin
+Any?.toUnit()
+
 T?.isNotNull()
 T?.isNull()
+
+Any.cast(clazz: Class<T>)
+Any.cast(clazz: KClass<T>)
+
+Date.format(pattern: String, locale: Locale = Locale.getDefault())
 ```
 
 ## [rxjava2](https://github.com/tomasznajda/useful-ktx/tree/master/rxjava2/src/main/kotlin/com/tomasznajda/ktx/rxjava2)
