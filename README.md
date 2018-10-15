@@ -6,9 +6,10 @@ Useful Kotlin extensions to speed up Android app development
 ```groovy
 dependencies {
     implementation "com.tomasznajda.ktx:android:1.1.0"
-    implementation "com.tomasznajda.ktx:gson:1.0.0"
     implementation "com.tomasznajda.ktx:kotlin:1.1.0"
     implementation "com.tomasznajda.ktx:rxjava2:1.1.0"
+    implementation "com.tomasznajda.ktx:gson:1.0.0"
+    implementation "com.tomasznajda.ktx:picasso:1.0.0"
 
     testImplementation "com.tomasznajda.ktx:junit:1.0.0"
 }
@@ -159,6 +160,14 @@ Observable<T>.concatWaitForCompletion(mapper: (T) -> Completable)
 Any.toJson()
 String.fromJson(clazz: Class<T>)
 String.fromJson(clazz: KClass<T>)
+```
+
+## [picasso](https://github.com/tomasznajda/useful-ktx/tree/master/picasso/src/main/kotlin/com/tomasznajda/ktx/picasso)
+```kotlin
+ImageView.loadImage(url: String?, extras: RequestCreator.() -> RequestCreator)
+ImageView.loadImage(uri: Uri?, extras: RequestCreator.() -> RequestCreator)
+ImageView.loadImage(file: File, extras: RequestCreator.() -> RequestCreator)
+ImageView.loadImage(@DrawableRes resourceId: Int, extras: RequestCreator.() -> RequestCreator)
 ```
 
 ## [junit](https://github.com/tomasznajda/useful-ktx/tree/master/junit/src/main/kotlin/com/tomasznajda/ktx/junit)

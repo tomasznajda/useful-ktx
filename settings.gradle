@@ -1,1 +1,1 @@
-include ':android', ':junit', ':rxjava2', ':gson', ':kotlin'
+include ':android', ':junit', ':rxjava2', ':gson', ':kotlin', ':picasso'
