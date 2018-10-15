@@ -5,8 +5,8 @@ Useful Kotlin extensions to speed up Android app development
 ## dependencies
 ```groovy
 dependencies {
-    implementation "com.tomasznajda.ktx:android:1.1.0"
-    implementation "com.tomasznajda.ktx:kotlin:1.1.0"
+    implementation "com.tomasznajda.ktx:android:1.2.0"
+    implementation "com.tomasznajda.ktx:kotlin:1.2.0"
     implementation "com.tomasznajda.ktx:rxjava2:1.1.0"
     implementation "com.tomasznajda.ktx:gson:1.0.0"
     implementation "com.tomasznajda.ktx:picasso:1.0.0"
@@ -22,6 +22,8 @@ String.copyToClipboard(context: Context, label: String)
 ViewGroup.inflate(@LayoutRes layoutId: Int, attachToRoot: Boolean = false)
 Context.inflate(@LayoutRes layoutId: Int)
 Fragment.inflate(@LayoutRes layoutId: Int)
+
+Date.format(pattern: String, locale: Locale = Locale.getDefault())
 
 logwtf(tag: String, msg: String = "", e: Throwable? = null)
 loge(tag: String, msg: String = "", e: Throwable? = null)
@@ -89,8 +91,6 @@ T?.isNull()
 
 Any.cast(clazz: Class<T>)
 Any.cast(clazz: KClass<T>)
-
-Date.format(pattern: String, locale: Locale = Locale.getDefault())
 ```
 
 ## [rxjava2](https://github.com/tomasznajda/useful-ktx/tree/master/rxjava2/src/main/kotlin/com/tomasznajda/ktx/rxjava2)

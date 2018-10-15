@@ -1,4 +1,4 @@
-package com.tomasznajda.ktx.kotlin
+package com.tomasznajda.ktx.android
 
 import java.text.SimpleDateFormat
 import java.util.*
