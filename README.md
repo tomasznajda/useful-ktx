@@ -5,7 +5,7 @@ Useful Kotlin extensions to speed up Android app development
 ## dependencies
 ```groovy
 dependencies {
-    implementation "com.tomasznajda.ktx:android:1.2.0"
+    implementation "com.tomasznajda.ktx:android:1.3.0"
     implementation "com.tomasznajda.ktx:kotlin:1.2.0"
     implementation "com.tomasznajda.ktx:rxjava2:1.1.0"
     implementation "com.tomasznajda.ktx:gson:1.0.0"
@@ -80,6 +80,11 @@ View.gone()
 View.isVisible: Boolean
 View.isInvisible: Boolean
 View.isGone: Boolean
+
+fromAndroid(version: Int, block: () -> Unit)
+toAndroid(version: Int, block: () -> Unit)
+afterAndroid(version: Int, block: () -> Unit)
+beforeAndroid(version: Int, block: () -> Unit)
 ```
 
 ## [kotlin](https://github.com/tomasznajda/useful-ktx/tree/master/kotlin/src/main/kotlin/com/tomasznajda/ktx/kotlin)
