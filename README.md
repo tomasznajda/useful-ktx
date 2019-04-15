@@ -85,6 +85,14 @@ fromAndroid(version: Int, block: () -> Unit)
 toAndroid(version: Int, block: () -> Unit)
 afterAndroid(version: Int, block: () -> Unit)
 beforeAndroid(version: Int, block: () -> Unit)
+
+Context.prefs(name: String? = null)
+SharedPreferences.boolean(key: String, defaultValue: Boolean = false)
+SharedPreferences.float(key: String, defaultValue: Float = 0f)
+SharedPreferences.int(key: String, defaultValue: Int = 0)
+SharedPreferences.long(key: String, defaultValue: Long = 0)
+SharedPreferences.string(key: String, defaultValue: String = "")
+SharedPreferences.stringSet(key: String, defaultValue: Set<String> = emptySet())
 ```
 
 ## [kotlin](https://github.com/tomasznajda/useful-ktx/tree/master/kotlin/src/main/kotlin/com/tomasznajda/ktx/kotlin)
