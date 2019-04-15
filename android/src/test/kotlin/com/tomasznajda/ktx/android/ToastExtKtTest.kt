@@ -1,6 +1,7 @@
 package com.tomasznajda.ktx.android
 
 import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Test
@@ -13,8 +14,7 @@ import org.robolectric.shadows.ShadowToast
 @RunWith(RobolectricTestRunner::class)
 class ToastExtKtTest {
 
-    val context: Context
-        get() = RuntimeEnvironment.application
+    val context = ApplicationProvider.getApplicationContext<Context>()
 
     @Test
     fun `toast shows toast with string message`() {

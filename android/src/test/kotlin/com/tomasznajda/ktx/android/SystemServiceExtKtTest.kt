@@ -3,6 +3,7 @@ package com.tomasznajda.ktx.android
 import android.app.*
 import android.app.job.JobScheduler
 import android.content.ClipboardManager
+import android.content.Context
 import android.hardware.SensorManager
 import android.location.LocationManager
 import android.media.AudioManager
@@ -19,6 +20,7 @@ import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.test.core.app.ApplicationProvider
 import com.tomasznajda.ktx.junit.assertIsInstanceOf
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,7 +30,7 @@ import org.robolectric.RuntimeEnvironment
 @RunWith(RobolectricTestRunner::class)
 class SystemServiceExtKtTest {
 
-    val context = RuntimeEnvironment.application
+    val context = ApplicationProvider.getApplicationContext<Context>()
 
     @Test
     fun `getClipboardManager provides clipboard service as clipboard manager`() {
